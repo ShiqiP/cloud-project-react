@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@layer base {
+  .custom-html * {
+    all: unset;
+    all: revert;
+    /* Reset styles */
+  }
+  .custom-html {
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  
+  .custom-html p,
+  .custom-html li {
+    white-space: pre-wrap; /* 保留空格 */
+  }
+  
+  .custom-html blockquote {
+    border-left: 8px solid #d0e5f2;
+    padding: 10px 10px;
+    margin: 10px 0;
+    background-color: #f1f1f1;
+  }
+  
+  .custom-html code {
+    font-family: monospace;
+    background-color: #eee;
+    padding: 3px;
+    border-radius: 3px;
+  }
+  .custom-html pre>code {
+    display: block;
+    padding: 10px;
+  }
+  
+  .custom-html table {
+    border-collapse: collapse;
+  }
+  .custom-html td,
+  .custom-html th {
+    border: 1px solid #ccc;
+    min-width: 50px;
+    height: 20px;
+  }
+  .custom-html th {
+    background-color: #f1f1f1;
+  }
+  
+  .custom-html ul,
+  .custom-html ol {
+    padding-left: 20px;
+  }
+  
+  .custom-html input[type="checkbox"] {
+    margin-right: 5px;
+  }
+}
