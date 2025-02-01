@@ -9,15 +9,15 @@ const useAxios = () => {
     const authContext = useContext(AuthContext);
     const loginContext = useContext(LoginContext);
 
-    const { enc_data, hash_data } = authContext.state;
+    // const { enc_data, hash_data } = authContext.state;
     const fetch = axios.create({
         baseURL: process.env.REACT_APP_URL,
         // baseURL: "http://localhost:8000",
         timeout: 10000,
-        headers: {
-            enc_data,
-            hash_data,
-        },
+        // headers: {
+        //     enc_data,
+        //     hash_data,
+        // },
     });
 
     fetch.interceptors.request.use(
@@ -35,9 +35,9 @@ const useAxios = () => {
         (response) => {
             const { status, data } = response;
             if (status >= 100 && status < 300) {
-                return response.data;
+                return response;
             } else {
-                return Promise.reject(data);
+                return Promise.reject(response);
             }
         },
         (error) => {

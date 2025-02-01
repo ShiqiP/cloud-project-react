@@ -10,12 +10,10 @@ export type PolicyType = {
     vote_user: Array<string>
 }
 export type AuthType = {
-    id: string,
     isAuth: boolean,
     name: string,
     email: string,
-    enc_data: string,
-    hash_data: string
+    image_url: string,
 }
 
 export type CategoryType = {

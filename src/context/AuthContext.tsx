@@ -2,12 +2,10 @@ import { createContext, useState, ReactNode, Dispatch, SetStateAction, useEffect
 
 // Define the shape of the context
 export interface authContextType {
-    id: string,
     isAuth: boolean,
     name: string,
-    email: string;
-    enc_data: string;
-    hash_data: string;
+    email: string,
+    image_url: string,
 }
 
 // Add a type for the context value (state + setState)
@@ -18,12 +16,10 @@ export interface AuthContextValue {
 
 // Default context state
 export const defaultAuthContext: authContextType = {
-    id: "",
     isAuth: false,
     name: "",
     email: "",
-    enc_data: "",
-    hash_data: "",
+    image_url: ''
 };
 
 // Create the context
@@ -37,9 +33,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [state, setState] = useState<authContextType>(defaultAuthContext);
     useEffect(() => {
         const auth = JSON.parse(localStorage.getItem("auth"))
-        if(auth)
+        if (auth)
             setState(auth);
-      }, [])
+    }, [])
     return (
         <AuthContext.Provider value={{ state, setState }}>
             {children}

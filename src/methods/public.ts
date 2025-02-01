@@ -15,8 +15,8 @@ const usePublic = () => {
                 url: "/signin",
                 data
             }).then(response => {
-                const { enc_data, hash_data, name, email, id } = response?.data || {};
-                const authData = { enc_data, hash_data, email, name, isAuth: true, id }
+                const { email, image_url, name } = response?.data.User || {};
+                const authData = { email, name, isAuth: true, image_url }
                 localStorage.setItem("auth", JSON.stringify(authData));
                 authContext.setState(authData)
                 loginContext.setState({ loginVisible: false, type: 0 });
@@ -39,15 +39,19 @@ const usePublic = () => {
             data
         })
         const { enc_data, hash_data, name, email, id } = response?.data || {};
-        authContext.setState({ enc_data, hash_data, email, name, isAuth: true, id })
+        // authContext.setState({ enc_data, hash_data, email, name, isAuth: true, id })
         loginContext.setState({ loginVisible: false, type: 0 });
     }
-    const getPresignedUrl = (data = {}) => {
-        try { return fetch({ method: 'get', url: '', data }) } catch (err) { }
+    const getPresignedUrl = (filename) => {
+        try {
+            const { email } = authContext.state
+            return fetch({ method: 'post', url: '/presign', data: { email, filename } })
+        } catch (err) { }
         // console.log("getPresignedUrl")
     }
-    const updateImgUrl = (data = {}) => {
-        try { return fetch({ method: 'get', url: '', data }) } catch (err) { }
+    const updateImgUrl = (image_url) => {
+        const { email } = authContext.state
+        try { return fetch({ method: 'put', url: '/update-image-url', data: { image_url, email } }) } catch (err) { }
         // console.log("updateImgUrl")
     }
     return {
