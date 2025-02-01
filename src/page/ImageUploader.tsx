@@ -20,10 +20,11 @@ const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>((props
                     const response = await getPresignedUrl(filename)
                     console.log(response)
                     const upload_url = response.data.upload_url
+                    const update_url = upload_url.split('?')[0]
                     await axios.put(upload_url, file, {
                         headers: { 'Content-Type': file.type },
                     });
-                    await updateImgUrl(upload_url);
+                    await updateImgUrl(update_url);
                     showPopup("upload successfully")
                 }
             } catch (err) {
