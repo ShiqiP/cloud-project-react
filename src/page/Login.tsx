@@ -81,7 +81,7 @@ function Login() {
                             <div >
                                 <input className="border border-sky-300 text-lg px-3 py-1 w-full h-10 rounded" name="email" value={formData.email} placeholder="Email" onChange={handleChange} onBlur={(e) => handleBlur(e, isValidEmail)} />
                                 <p className={`mb-1 text-sm text-red-600 ${validForm.email ? 'invisible' : 'visible'}`} >Please enter a valid email address.</p>
-                                <input className="border w-full border-sky-300 text-lg px-3 py-1  h-10 rounded" name="password" value={formData.password} onChange={handleChange} placeholder="password" onBlur={(e) => handleBlur(e, isValidEmpty)} />
+                                <input className="border w-full border-sky-300 text-lg px-3 py-1  h-10 rounded" type="password" name="password" value={formData.password} onChange={handleChange} placeholder="password" onBlur={(e) => handleBlur(e, isValidEmpty)} />
                                 <p className={`mb-1 text-sm text-red-600 ${validForm.password ? 'invisible' : 'visible'}`} >Please enter password</p>
                             </div>
                             <button className="bg-sky-800 text-white text-lg py-1 font-bold rounded" type="submit">Login</button>
@@ -100,7 +100,7 @@ function Login() {
                                 <p className={`mb-1 text-sm text-red-600 ${validForm.name ? 'invisible' : 'visible'}`} >Please enter name to sign up</p>
                                 <input className="border w-full border-sky-300 text-lg px-3 py-1  h-10 rounded" name="email" value={formData.email} onChange={handleChange} placeholder="Email" onBlur={(e) => handleBlur(e, isValidEmail)} />
                                 <p className={`mb-1 text-sm text-red-600 ${validForm.email ? 'invisible' : 'visible'}`} >Please enter a valid email address.</p>
-                                <input className="border w-full border-sky-300 text-lg px-3 py-1  h-10 rounded" name="password" value={formData.password} onChange={handleChange} placeholder="password" onBlur={(e) => handleBlur(e, isValidEmpty)} />
+                                <input className="border w-full border-sky-300 text-lg px-3 py-1  h-10 rounded" type="password" name="password" value={formData.password} onChange={handleChange} placeholder="password" onBlur={(e) => handleBlur(e, isValidEmpty)} />
                                 <p className={`mb-1 text-sm text-red-600 ${validForm.password ? 'invisible' : 'visible'}`} >Please enter password to sign up</p>
                                 <ImageUploader ref={ImageUploaderRef} />
                             </div>

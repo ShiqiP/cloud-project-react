@@ -19,7 +19,7 @@ function Home() {
                 <div>
                     <div>name:{name}</div>
                     <div>email:{email}</div>
-                    <ImageUploader ref={ImageUploaderRef} img={"https://final-project-shiqi.s3.us-east-1.amazonaws.com/logo512.png"} />
+                    <ImageUploader ref={ImageUploaderRef} img={image_url} />
                     <button className="bg-sky-800 text-white text-lg p-1 font-bold rounded" onClick={handleSave}>Save</button>
                 </div>
             </div>
