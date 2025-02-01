@@ -4,7 +4,7 @@ import { createContext, useState, ReactNode, Dispatch, SetStateAction, useEffect
 export interface authContextType {
     id: string,
     isAuth: boolean,
-    fullName: string,
+    name: string,
     email: string;
     enc_data: string;
     hash_data: string;
@@ -20,7 +20,7 @@ export interface AuthContextValue {
 export const defaultAuthContext: authContextType = {
     id: "",
     isAuth: false,
-    fullName: "",
+    name: "",
     email: "",
     enc_data: "",
     hash_data: "",

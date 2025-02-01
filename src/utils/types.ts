@@ -12,7 +12,7 @@ export type PolicyType = {
 export type AuthType = {
     id: string,
     isAuth: boolean,
-    fullName: string,
+    name: string,
     email: string,
     enc_data: string,
     hash_data: string

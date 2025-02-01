@@ -9,12 +9,10 @@ const useAxios = () => {
     const authContext = useContext(AuthContext);
     const loginContext = useContext(LoginContext);
 
-    const navigate = useNavigate();
     const { enc_data, hash_data } = authContext.state;
-
     const fetch = axios.create({
-        // baseURL: process.env.REACT_APP_URL,
-        baseURL: "http://localhost:8000",
+        baseURL: process.env.REACT_APP_URL,
+        // baseURL: "http://localhost:8000",
         timeout: 10000,
         headers: {
             enc_data,
