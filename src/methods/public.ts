@@ -55,6 +55,7 @@ const usePublic = () => {
         try {
             const { email } = auth
             authContext.setState(pre => ({ ...pre, image_url }))
+            localStorage.setItem("auth", JSON.stringify({ ...auth, image_url }));
             return fetch({ method: 'put', url: '/update-url', data: { image_url, email } })
         } catch (err) {
 
