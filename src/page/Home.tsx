@@ -20,7 +20,7 @@ function Home() {
     }
     const handleSave = async () => {
         try {
-            await ImageUploaderRef.current.handleUpload();
+            await ImageUploaderRef.current.handleUpload(authContext.state);
             showPopup("upload successfully")
         } catch (err) {
 

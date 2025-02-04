@@ -53,7 +53,6 @@ const useAxios = () => {
                 loginContext.setState({ type: 1, loginVisible: true })
                 return Promise.reject(error);
             } else {
-                console.log(error)
                 return Promise.reject(error);
             }
 

@@ -25,6 +25,7 @@ const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>((props
                         await updateImgUrl(update_url, auth);
                         resolve(null);
                     }
+                    resolve(null);
                 } catch (err) {
                     reject(err)
                 }
