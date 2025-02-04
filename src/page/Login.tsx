@@ -52,14 +52,15 @@ function Login() {
         try {
             e.preventDefault();
             checkForm()
-            ImageUploaderRef.current.handleUpload();
             if (!Object.keys(validForm).every(key => formData[key])) return
 
             const { email, name, password } = formData;
             await signup({ email, name, password })
-            await ImageUploaderRef.current.hanldeUpload();
+            const respoense = await login({ email, password })
+            await ImageUploaderRef.current.handleUpload(respoense);
             navigate('/homepage')
         } catch (err) {
+
         }
     }
     const handleChangeType = (e) => {

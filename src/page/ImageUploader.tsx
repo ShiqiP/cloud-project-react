@@ -1,35 +1,35 @@
 import React, { useState, useRef, useImperativeHandle, forwardRef } from 'react';
 import usePublic from '../methods/public';
 import axios from 'axios';
-import { usePopup } from "../context/PopupContext";
 
 interface ImageUploaderProps {
     img?: string;
 }
 export interface ImageUploaderHandle {
-    handleUpload: () => Promise<void>;
+    handleUpload: (auth) => Promise<void>;
 }
 
 const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>((props, ref) => {
-    const { showPopup } = usePopup();
     useImperativeHandle(ref, () => ({
-        handleUpload: async () => {
-            try {
-                if (file) {
-                    const filename = encodeURIComponent(file.name);
-                    const response = await getPresignedUrl(filename)
-                    console.log(response)
-                    const upload_url = response.data.upload_url
-                    const update_url = upload_url.split('?')[0]
-                    await axios.put(upload_url, file, {
-                        headers: { 'Content-Type': file.type },
-                    });
-                    await updateImgUrl(update_url);
-                    showPopup("upload successfully")
+        handleUpload: (auth) => {
+            return new Promise(async (resolve, reject) => {
+                try {
+                    if (file) {
+                        const filename = encodeURIComponent(file.name);
+                        const response = await getPresignedUrl(filename, auth)
+                        const upload_url = response.data.upload_url
+                        const update_url = upload_url.split('?')[0]
+                        await axios.put(upload_url, file, {
+                            headers: { 'Content-Type': file.type },
+                        });
+                        await updateImgUrl(update_url, auth);
+                        resolve(null);
+                    }
+                } catch (err) {
+                    reject(err)
                 }
-            } catch (err) {
+            })
 
-            }
         }
     }));
 
