@@ -5,6 +5,7 @@
 1. create a connection connecting Github repository in AWS.
 2. create lambda function to invalidate cloudfront
 3. grant permission to lambda function which can operate cloudfront
+4. create CloudFormation stack using template yml file. which is in /CloudFormtion/build.yml
 
 ## Lambda function
 
