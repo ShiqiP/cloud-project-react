@@ -72,7 +72,6 @@ function Login() {
     return (
         <>
             <div className="h-screen flex items-center justify-center">
-                <div>test</div>
                 <div className="w-96 p-x shadow-md p-8">
                     {loginContext.state.type === 0 && <>
                         <div className="mb-5">

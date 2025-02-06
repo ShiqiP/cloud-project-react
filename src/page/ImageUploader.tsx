@@ -6,30 +6,25 @@ interface ImageUploaderProps {
     img?: string;
 }
 export interface ImageUploaderHandle {
-    handleUpload: (auth) => Promise<void>;
+    handleUpload: (auth) => void;
 }
 
 const ImageUploader = forwardRef<ImageUploaderHandle, ImageUploaderProps>((props, ref) => {
     useImperativeHandle(ref, () => ({
-        handleUpload: (auth) => {
-            return new Promise(async (resolve, reject) => {
-                try {
-                    if (file) {
-                        const filename = encodeURIComponent(file.name);
-                        const response = await getPresignedUrl(filename, auth)
-                        const upload_url = response.data.upload_url
-                        const update_url = upload_url.split('?')[0]
-                        await axios.put(upload_url, file, {
-                            headers: { 'Content-Type': file.type },
-                        });
-                        await updateImgUrl(update_url, auth);
-                        resolve(null);
-                    }
-                    resolve(null);
-                } catch (err) {
-                    reject(err)
+        handleUpload: async (auth) => {
+            try {
+                if (file) {
+                    const filename = encodeURIComponent(file.name);
+                    const response = await getPresignedUrl(filename, auth)
+                    const upload_url = response.data.upload_url
+                    const update_url = upload_url.split('?')[0]
+                    await axios.put(upload_url, file, {
+                        headers: { 'Content-Type': file.type },
+                    });
+                    await updateImgUrl(update_url, auth);
                 }
-            })
+            } catch (err) {
+            }
 
         }
     }));

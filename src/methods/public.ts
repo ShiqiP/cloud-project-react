@@ -17,8 +17,8 @@ const usePublic = () => {
                 url: "/sign-in",
                 data
             }).then(response => {
-                const { email, image_url, name } = response?.data.User || {};
-                const authData = { email, name, isAuth: true, image_url }
+                const { email, image_url, name, token } = response?.data.User || {};
+                const authData = { email, name, isAuth: true, image_url, token }
                 localStorage.setItem("auth", JSON.stringify(authData));
                 authContext.setState(authData)
                 resolve(authData)

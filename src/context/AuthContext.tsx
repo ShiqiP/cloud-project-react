@@ -5,7 +5,8 @@ export interface authContextType {
     isAuth: boolean,
     name: string,
     email: string,
-    image_url: string,
+    image_url?: string,
+    token: string
 }
 
 // Add a type for the context value (state + setState)
@@ -19,7 +20,8 @@ export const defaultAuthContext: authContextType = {
     isAuth: false,
     name: "",
     email: "",
-    image_url: ''
+    image_url: "",
+    token: ""
 };
 
 // Create the context
